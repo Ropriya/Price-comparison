@@ -9,7 +9,7 @@ from serpapi import GoogleSearch
 #header
 c1,c2 = st.columns(2)
 c1.image("E-pharmacy logo.png", width= 250)
-c2.header("E-Pharmacy price compairsion system")
+c2.header("E-Pharmacy price comparison system")
 
 #-----------------------------------------------------------------------------------------
 def compare(med_name):
@@ -94,6 +94,7 @@ if med_name is not None:
         ax.pie(med_price,labels=med_company,shadow=True)
         ax.axis("equal")
         st.pyplot(fig)
+
 
 
 
