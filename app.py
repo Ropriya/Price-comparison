@@ -36,7 +36,7 @@ med_price=[]
 if med_name is not None:
     if st.sidebar.button("Price compair"):
         shopping_results=compare(med_name)
-        lowest_price = float((shopping_results[0].get('price'))[1:])
+        lowest_price = float(((shopping_results[0].get('price'))[1:]).replace(",",""))
         print(lowest_price)
         lowest_price_index = 0
         
@@ -45,9 +45,9 @@ if med_name is not None:
 
 
         for i in range(int(number)):
-            current_price =  float((shopping_results[i].get('price'))[1:])
+            current_price =  float(((shopping_results[i].get('price'))[1:]).replace(",",""))
             med_company.append(shopping_results[i].get("source"))
-            med_price.append (float((shopping_results[i].get('price'))[1:]))
+            med_price.append (current_price)
             
             #---------------------------------------------------------------------------
             st.title(f"Option {i+1}")
@@ -94,6 +94,7 @@ if med_name is not None:
         ax.pie(med_price,labels=med_company,shadow=True)
         ax.axis("equal")
         st.pyplot(fig)
+
 
 
 
