@@ -4,6 +4,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from serpapi import GoogleSearch
 
+
+
 #header
 c1,c2 = st.columns(2)
 c1.image("E-pharmacy logo.png", width= 250)
@@ -30,12 +32,14 @@ number=st.sidebar.text_input("Enter Number of options here 👇:")
 med_company=[]
 med_price=[]
 
+
 if med_name is not None:
     if st.sidebar.button("Price compair"):
         shopping_results=compare(med_name)
         lowest_price = float((shopping_results[0].get('price'))[1:])
         print(lowest_price)
         lowest_price_index = 0
+        
 
         st.sidebar.image(shopping_results[0].get('thumbnail'))
 
@@ -44,6 +48,7 @@ if med_name is not None:
             current_price =  float((shopping_results[i].get('price'))[1:])
             med_company.append(shopping_results[i].get("source"))
             med_price.append (float((shopping_results[i].get('price'))[1:]))
+            
             #---------------------------------------------------------------------------
             st.title(f"Option {i+1}")
             c1,c2 = st.columns(2)
@@ -89,6 +94,7 @@ if med_name is not None:
         ax.pie(med_price,labels=med_company,shadow=True)
         ax.axis("equal")
         st.pyplot(fig)
+
 
 
 
